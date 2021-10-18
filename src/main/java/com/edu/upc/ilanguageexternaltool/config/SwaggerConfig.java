@@ -15,7 +15,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-        		.tags(new Tag("Customers", "Customers"))
+        		.tags(new Tag("ExternalTools", "ExternalTools"))
         		.select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
