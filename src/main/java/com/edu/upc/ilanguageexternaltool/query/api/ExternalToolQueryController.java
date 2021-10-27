@@ -22,15 +22,15 @@ import java.util.Optional;
 @RequestMapping("/externaltool")
 @Api(tags = "ExternalTool")
 public class ExternalToolQueryController {
-    private final ExternalToolViewRepository externalToolViewRepositoy;
+    private final ExternalToolViewRepository externalToolViewRepository;
     private final ExternalToolHistoryViewRepository externalToolHistoryViewRepository;
 
-    public ExternalToolQueryController(ExternalToolViewRepository externalToolViewRepositoy, ExternalToolHistoryViewRepository externalToolHistoryViewRepository) {
-        this.externalToolViewRepositoy = externalToolViewRepositoy;
+    public ExternalToolQueryController(ExternalToolViewRepository externalToolViewRepository, ExternalToolHistoryViewRepository externalToolHistoryViewRepository) {
+        this.externalToolViewRepository = externalToolViewRepository;
         this.externalToolHistoryViewRepository = externalToolHistoryViewRepository;
     }
 
-    @Operation(summary="Get all subscriptions", description="This endpoind returns all the availeble subscription for Ilanguage Application", tags = {"subscriptions"} )
+    @Operation(summary="Get all external tools", description="This endpoint returns all the available external tools for Ilanguage Application", tags = {"ExternalTool"} )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description="All ExternalTool returned", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "404", description="ExternalTool Not Found", content = @Content(mediaType = "application/json"))
@@ -39,7 +39,7 @@ public class ExternalToolQueryController {
     @GetMapping("")
     public ResponseEntity<List<ExternalToolView>> getAll(){
         try {
-            return new ResponseEntity<List<ExternalToolView>>(externalToolViewRepositoy.findAll(), HttpStatus.OK);
+            return new ResponseEntity<List<ExternalToolView>>(externalToolViewRepository.findAll(), HttpStatus.OK);
         }
         catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -47,7 +47,7 @@ public class ExternalToolQueryController {
     }
 
 
-    @Operation(summary="Get subscription by id", description="This endpoind returns an specific subscription by the given ID Ilanguage Application", tags = {"subscriptions"} )
+    @Operation(summary="Get external tool by id", description="This endpoint returns an specific external tool by the given ID Ilanguage Application", tags = {"ExternalTool"} )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description="ExternalTool returned", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "404", description="ExternalTool Not Found", content = @Content(mediaType = "application/json"))
@@ -56,14 +56,14 @@ public class ExternalToolQueryController {
     @RequestMapping(value= "id/{id}", method = RequestMethod.GET)
     public ResponseEntity<ExternalToolView> getById(@PathVariable(name="id") String subscriptionId){
         try {
-            return new ResponseEntity<ExternalToolView>(externalToolViewRepositoy.getById(subscriptionId), HttpStatus.OK);
+            return new ResponseEntity<ExternalToolView>(externalToolViewRepository.getById(subscriptionId), HttpStatus.OK);
         }
         catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @Operation(summary="Get subscription by name", description="This endpoind returns an specific subscription by the given ID Ilanguage Application", tags = {"subscriptions"} )
+    @Operation(summary="Get external tool by name", description="This endpoint returns an specific external tool by the given ID Ilanguage Application", tags = {"ExternalTool"} )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description="ExternalTool returned", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "404", description="ExternalTool Not Found", content = @Content(mediaType = "application/json"))
@@ -72,7 +72,7 @@ public class ExternalToolQueryController {
     @RequestMapping( value = "name/{name}",method = RequestMethod.GET)
     public ResponseEntity<ExternalToolView> getByName(@PathVariable(name="name") String externalToolName){
         try {
-            return new ResponseEntity<ExternalToolView>(externalToolViewRepositoy.findByName(externalToolName), HttpStatus.OK);
+            return new ResponseEntity<ExternalToolView>(externalToolViewRepository.findByName(externalToolName), HttpStatus.OK);
         }
         catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -80,7 +80,7 @@ public class ExternalToolQueryController {
     }
 
 
-    @Operation(summary="Get history subscription by id", description="This endpoind returns the list with the history of an specific subscription by the given ID Ilanguage Application", tags = {"subscriptions"} )
+    @Operation(summary="Get history external tool by id", description="This endpoint returns the list with the history of an specific external tool by the given ID Ilanguage Application", tags = {"ExternalTool"} )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description="ExternalTool returned", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "404", description="ExternalTool Not Found", content = @Content(mediaType = "application/json"))
