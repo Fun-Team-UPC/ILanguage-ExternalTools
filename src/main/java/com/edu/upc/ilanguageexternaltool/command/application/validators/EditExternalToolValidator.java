@@ -25,27 +25,25 @@ public class EditExternalToolValidator {
     public Notification validate(EditExternalToolRequest editExternalToolRequest)
     {
         Notification notification = new Notification();
-        String name = editExternalToolRequest.getName();
-        String description = editExternalToolRequest.getDescription();
-        String resource = editExternalToolRequest.getResource();
-
-        //First of all, id should be valid
-        Optional<ExternalToolName> existingSubscription = externalToolNameRepository.findSubscriptionBySubscriptionId(editExternalToolRequest.getExternalToolId());
-        if(existingSubscription.isEmpty()){
-            notification.addError("External Tool with id" + editExternalToolRequest.getExternalToolId() + " does not exists");
+        String externalToolId = editExternalToolRequest.getExternalToolId().trim();
+        if (externalToolId.isEmpty()) {
+            notification.addError("External Tool Id is required");
+        }
+        loadExternalToolAggregate(externalToolId);
+        String name = editExternalToolRequest.getName().trim();
+        if (name.isEmpty()) {
+            notification.addError("External Tool Name is required");
+        }
+        String description = editExternalToolRequest.getDescription().trim();
+        if (description.isEmpty()) {
+            notification.addError("External Tool Description is required");
+        }
+        String resource = editExternalToolRequest.getResource().trim();
+        if (resource.isEmpty()) {
+            notification.addError("External Tool Resource is required");
+        }
+        if (notification.hasErrors()) {
             return notification;
-        }
-        existingSubscription = externalToolNameRepository.findByPrice(editExternalToolRequest.getName());
-        if(existingSubscription.isPresent()){
-            notification.addError("External Tool with that name already exists");
-        }
-        existingSubscription = externalToolNameRepository.findByMonthDuration(editExternalToolRequest.getDescription());
-        if(existingSubscription.isPresent()){
-            notification.addError("External Tool with that description already exists");
-        }
-        existingSubscription = externalToolNameRepository.findByName(editExternalToolRequest.getResource());
-        if(existingSubscription.isPresent()){
-            notification.addError("External Tool with that resource already exists");
         }
         return notification;
     }

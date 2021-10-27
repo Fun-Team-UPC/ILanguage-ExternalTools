@@ -18,6 +18,6 @@ public interface ExternalToolNameRepository extends JpaRepository<ExternalToolNa
     public Optional<ExternalToolName>findByMonthDuration(String resource);
 
     @Query("SELECT s FROM ExternalToolName s WHERE s.externalToolId = ?1")
-    public Optional<ExternalToolName>findSubscriptionBySubscriptionId(String subscriptionId);
+    public Optional<ExternalToolName>findExternalToolByExternalToolId(String subscriptionId);
 
 }

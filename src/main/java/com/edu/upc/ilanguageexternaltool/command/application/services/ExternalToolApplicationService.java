@@ -33,6 +33,9 @@ public class ExternalToolApplicationService {
         this.commandGateway = commandGateway;
         this.externalToolNameRepository = externalToolNameRepository;
     }
+//    public Result<RegisterExternalToolResponse,Notification> getById(RegisterExternalToolRequest registerExternalToolRequest) throws Exception {
+//        Notification notification = this.registerExternalToolValidator.validate(registerExternalToolRequest);
+//    }
 
     public Result<RegisterExternalToolResponse, Notification> register(RegisterExternalToolRequest registerExternalToolRequest) throws Exception {
         Notification notification = this.registerExternalToolValidator.validate(registerExternalToolRequest);

@@ -5,10 +5,14 @@ import com.edu.upc.ilanguageexternaltool.command.application.dtos.request.Regist
 import com.edu.upc.ilanguageexternaltool.command.application.dtos.response.EditExternalToolResponse;
 import com.edu.upc.ilanguageexternaltool.command.application.dtos.response.RegisterExternalToolResponse;
 import com.edu.upc.ilanguageexternaltool.command.application.services.ExternalToolApplicationService;
+import com.edu.upc.ilanguageexternaltool.command.domain.ExternalTool;
 import com.edu.upc.ilanguageexternaltool.command.infra.ExternalToolNameRepository;
 import io.swagger.annotations.Api;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.command.AggregateNotFoundException;
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -17,11 +21,15 @@ import pe.com.ilanguage.common.api.ApiController;
 import pe.com.ilanguage.common.application.Notification;
 import pe.com.ilanguage.common.application.Result;
 
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+
 @RestController
 @RequestMapping("/externaltool")
 @Api(tags = "ExternalTool")
 public class ExternalToolCommandController {
 
+    private static final Logger log = LoggerFactory.getLogger(ExternalToolCommandController.class);
     private final ExternalToolApplicationService externalToolApplicationService;
     private final CommandGateway commandGateway;
 

@@ -31,7 +31,7 @@ public class ExternalToolEventHandler {
 
     @EventHandler
     public void on(ExternalToolEdited event){
-        Optional<ExternalToolName> externalToolName = externalToolNameRepository.findSubscriptionBySubscriptionId(event.getExternalToolId());
+        Optional<ExternalToolName> externalToolName = externalToolNameRepository.findExternalToolByExternalToolId(event.getExternalToolId());
         externalToolName.ifPresent(externalToolNameRepository::delete);
         ExternalToolName newExternalTool =  new ExternalToolName();
         newExternalTool.setExternalToolId(event.getExternalToolId());
