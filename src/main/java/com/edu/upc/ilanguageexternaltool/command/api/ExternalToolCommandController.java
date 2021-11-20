@@ -13,6 +13,7 @@ import org.axonframework.modelling.command.AggregateNotFoundException;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,7 @@ import java.util.concurrent.CompletableFuture;
 @RestController
 @RequestMapping("/externaltool")
 @Api(tags = "ExternalTool")
+
 public class ExternalToolCommandController {
 
     private static final Logger log = LoggerFactory.getLogger(ExternalToolCommandController.class);
