@@ -8,12 +8,15 @@ import com.edu.upc.ilanguageexternaltool.command.application.services.ExternalTo
 import com.edu.upc.ilanguageexternaltool.command.domain.ExternalTool;
 import com.edu.upc.ilanguageexternaltool.command.infra.ExternalToolNameRepository;
 import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.command.AggregateNotFoundException;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -27,7 +30,7 @@ import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/externaltool")
-@Api(tags = "ExternalTool")
+//@Tag(name = "ExternalTool")
 
 public class ExternalToolCommandController {
 
