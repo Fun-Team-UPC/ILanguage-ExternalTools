@@ -11,6 +11,7 @@
     <groupId>com.edu.upc</groupId>
     <artifactId>ILanguage-ExternalTool</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>ILanguage-ExternalTool</name>
     <description>ILanguage-ExternalTool</description>
     <properties>
@@ -129,6 +130,25 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.5.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+<!--        <dependency>-->
+<!--            <groupId>com.thoughtworks.xstream</groupId>-->
+<!--            <artifactId>xstream</artifactId>-->
+<!--            <version>1.4.2</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ILanguage-ExternalTool-contracts</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>ILanguage-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

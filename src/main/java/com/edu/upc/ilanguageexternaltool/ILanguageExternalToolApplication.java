@@ -13,5 +13,12 @@ public class ILanguageExternalToolApplication {
     public static void main(String[] args) {
         SpringApplication.run(ILanguageExternalToolApplication.class, args);
     }
+
+    public static void disableWarning() {
+        System.err.close();
+        System.setErr(System.out);
+    }
+
+
 }
 
