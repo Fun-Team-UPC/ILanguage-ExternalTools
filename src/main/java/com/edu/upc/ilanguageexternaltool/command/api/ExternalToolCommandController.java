@@ -30,7 +30,7 @@ import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/externaltool")
-//@Tag(name = "ExternalTool")
+@Api(tags = "ExternalTools")
 
 public class ExternalToolCommandController {
 
