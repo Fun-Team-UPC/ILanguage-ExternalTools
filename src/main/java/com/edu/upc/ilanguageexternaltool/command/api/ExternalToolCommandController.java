@@ -24,9 +24,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
-import pe.com.ilanguage.common.api.ApiController;
-import pe.com.ilanguage.common.application.Notification;
-import pe.com.ilanguage.common.application.Result;
+import pe.edu.upc.banking.common.api.ApiController;
+import pe.edu.upc.banking.common.application.Notification;
+import pe.edu.upc.banking.common.application.Result;
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -37,7 +37,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ExternalToolCommandController {
 
-    private static final Logger log = LoggerFactory.getLogger(ExternalToolCommandController.class);
+    //private static final Logger log = LoggerFactory.getLogger(ExternalToolCommandController.class);
     private final ExternalToolApplicationService externalToolApplicationService;
     private final CommandGateway commandGateway;
 

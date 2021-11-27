@@ -12,9 +12,10 @@ import contracts.commands.RegisterExternalTool;
 import lombok.AllArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Component;
-import pe.com.ilanguage.common.application.Notification;
-import pe.com.ilanguage.common.application.Result;
-import pe.com.ilanguage.common.application.ResultType;
+import pe.edu.upc.banking.common.application.Notification;
+import pe.edu.upc.banking.common.application.Result;
+import pe.edu.upc.banking.common.application.ResultType;
+
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;

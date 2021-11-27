@@ -4,7 +4,7 @@ import com.edu.upc.ilanguageexternaltool.command.application.dtos.request.Regist
 import com.edu.upc.ilanguageexternaltool.command.infra.ExternalToolName;
 import com.edu.upc.ilanguageexternaltool.command.infra.ExternalToolNameRepository;
 import org.springframework.stereotype.Component;
-import pe.com.ilanguage.common.application.Notification;
+import pe.edu.upc.banking.common.application.Notification;
 
 import java.util.Optional;
 
