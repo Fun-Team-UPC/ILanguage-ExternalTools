@@ -8,6 +8,9 @@ import com.edu.upc.ilanguageexternaltool.command.application.services.ExternalTo
 import com.edu.upc.ilanguageexternaltool.command.domain.ExternalTool;
 import com.edu.upc.ilanguageexternaltool.command.infra.ExternalToolNameRepository;
 import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -43,6 +46,17 @@ public class ExternalToolCommandController {
         this.commandGateway = commandGateway;
     }
 
+    @Operation(summary = "Post external tool", description = "This endpoint is for saving a new External Tool for Ilanguage Application")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            content = @Content(
+                    mediaType = "application/json",
+                    examples = {
+                            @ExampleObject(value = "{\"name\": \"Zoom\", " +
+                                    "\"description\": \"This tool is for online sessions\", " +
+                                    "\"resource\": \"string\"}")
+                    }
+            )
+    )
     @PostMapping(path= "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> register(@RequestBody RegisterExternalToolRequest registerExternalToolRequest) {
         try {
@@ -56,6 +70,17 @@ public class ExternalToolCommandController {
         }
     }
 
+    @Operation(summary = "Update an external tool", description = "This endpoint is for editing an existing External Tool for Ilanguage Application")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            content = @Content(
+                    mediaType = "application/json",
+                    examples = {
+                            @ExampleObject(value = "{\"name\": \"Zoom\", " +
+                                    "\"description\": \"This tool is for online meeting between tutor and student\", " +
+                                    "\"resource\": \"string\"}")
+                    }
+            )
+    )
     @PutMapping("/{externalToolId}")
     public ResponseEntity<Object> edit(@PathVariable("externalToolId") String externalToolId, @RequestBody EditExternalToolRequest editExternalToolRequest) {
         try {
